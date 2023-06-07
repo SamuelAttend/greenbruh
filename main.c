@@ -5,6 +5,7 @@
 
 int main(int argc, char *argv[])
 {
+	//TEST TEST TEST TEETETE
     if (SDL_Init(SDL_INIT_EVERYTHING) != 0)
     {
         fprintf(stderr, "Error initializing SDL: %d\n", SDL_GetError());
