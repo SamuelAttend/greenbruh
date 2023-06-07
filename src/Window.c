@@ -20,6 +20,8 @@ uint8_t initWindow(Window *window)
     {
         fprintf(stderr, "Error initializing SDL renderer: %d\n", SDL_GetError());
     }
+
+    SDL_SetWindowOpacity(window->windowSDL, 0.5f);
 }
 
 void destroyWindow(Window *window)
