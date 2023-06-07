@@ -12,5 +12,5 @@ LINKER_FLAGS = -lmingw32 -lSDL2main -lSDL2 -lm
 
 OBJ_NAME = build/main.exe
 
-all: $(SRCS)
+all:
 	$(CC) $(SRCS) $(INCLUDE_PATHS) $(LIBRARY_PATHS) $(COMPILER_FLAGS) -o $(OBJ_NAME) $(LINKER_FLAGS)
