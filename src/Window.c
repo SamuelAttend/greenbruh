@@ -10,7 +10,7 @@ uint8_t initWindow(Window *window)
                                          SDL_WINDOWPOS_CENTERED,
                                          600,
                                          300,
-                                         SDL_WINDOW_SHOWN);
+                                         SDL_WINDOW_HIDDEN);
     if (window->windowSDL == NULL)
     {
         fprintf(stderr, "Error initializing SDL window: %d\n", SDL_GetError());
@@ -22,6 +22,7 @@ uint8_t initWindow(Window *window)
     }
 
     SDL_SetWindowOpacity(window->windowSDL, 0.5f);
+	SDL_ShowWindow(window->windowSDL);
 }
 
 void destroyWindow(Window *window)
