@@ -1,5 +1,9 @@
 #include "Window.h"
 
+SDL_HitTestResult windowHitTest(SDL_Window* win, const SDL_Point* area, void* data) {
+	return SDL_HITTEST_DRAGGABLE;
+}
+
 uint8_t initWindow(Window *window)
 {
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
@@ -22,6 +26,8 @@ uint8_t initWindow(Window *window)
     }
 
     SDL_SetWindowOpacity(window->windowSDL, 0.5f);
+	SDL_SetWindowBordered(window->windowSDL, false);
+	SDL_SetWindowHitTest(window->windowSDL, windowHitTest, NULL);
 	SDL_ShowWindow(window->windowSDL);
 }
 
