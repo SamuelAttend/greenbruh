@@ -16,7 +16,7 @@ ifeq ($(OS), Windows_NT)
 	LINKER_FLAGS = -lmingw32 -lSDL2main -lSDL2 -lSDL2_ttf
 	COMPILER_FLAGS += -mwindows -m32
 else
-	LINKER_FLAGS = `pkg-config --static --libs $(PKG)`
+	LINKER_FLAGS = Wl,-Bstatic `pkg-config --static --libs $(PKG)`
 	COMPILER_FLAGS += `pkg-config --static --cflags $(PKG)`
 endif
 
