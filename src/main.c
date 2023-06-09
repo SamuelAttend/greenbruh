@@ -9,7 +9,7 @@ void renderText(
 	SDL_Renderer *renderer, TTF_Font *font, SDL_Texture **texture, SDL_Rect *rect
 ) {
 
-    SDL_Surface *surface = TTF_RenderText_Solid(font, text, color);
+    SDL_Surface *surface = TTF_RenderUTF8_Blended(font, text, color);
     *texture = SDL_CreateTextureFromSurface(renderer, surface);
 
     rect->x = x;
@@ -40,7 +40,7 @@ int main(int argc, char *argv[])
 	SDL_Texture* txtTex;
 	SDL_Rect txtRect;
 
-	renderText("TEXT\nTEXT", 0, 0, (SDL_Color) {255, 255, 255}, window.rendererSDL, fnt, &txtTex, &txtRect);
+	renderText("рУССКИМ ПРИВЕТ!!", 0, 0, (SDL_Color) {0}, window.rendererSDL, fnt, &txtTex, &txtRect);
 
     bool quit = false;
     while (!quit)
