@@ -2,15 +2,23 @@ SRCS = $(wildcard ./src/*.c)
 
 CC = gcc
 
-INCLUDE_PATHS = -I ./include/
+PKG = sdl2 libdecor-0 freetype2
 
-LIBRARY_PATHS =
+INCLUDE_PATHS = -I./include/ `pkg-config --static --cflags $(PKG)`
 
-COMPILER_FLAGS = -O2 -fstack-protector
+ifeq ($(OS), Windows_NT)
+	LIBRARY_PATHS = -L/lib/windows/
+endif
 
-LINKER_FLAGS = -lSDL2main -lSDL2 -lm
+COMPILER_FLAGS = -std=c99 -O2 -fstack-protector
 
-OBJ_NAME = build/main.exe
+ifeq ($(OS), Windows_NT)
+	LINKER_FLAGS = -mingw32 -lSDL2main -lSDL2
+else
+	LINKER_FLAGS = `pkg-config --static --libs $(PKG)`
+endif
+
+OBJ_NAME = build/main
 
 all:
 	$(CC) $(SRCS) $(INCLUDE_PATHS) $(LIBRARY_PATHS) $(COMPILER_FLAGS) -o $(OBJ_NAME) $(LINKER_FLAGS)
